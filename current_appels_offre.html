@@ -141,7 +141,7 @@
         <div class="top-buttons">
             <a href="./prix_fixe" class="btn">Prix Fixe</a>
             <a href="./" class="btn">Appel Offre</a>
-            <a href="./current_appels_offre" class="btn">Current Appel Offre</a>
+            <a href="./current_appels_offre" class="btn">Last Appel Offre</a>
         </div>
         <div class="search-container">
             <input type="text" class="search-box" id="search-box" placeholder="Search...">
@@ -2014,5 +2014,77 @@
             </tbody>
         </table>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchBox = document.getElementById("search-box");
+            const tableRows = document.querySelectorAll(".announce");
+    
+            searchBox.addEventListener("input", function() {
+                const searchTerms = searchBox.value.toLowerCase().split(" ");
+    
+                tableRows.forEach(row => {
+                    const title = row.querySelector(".info-column:nth-child(2)").textContent.toLowerCase();
+                    const price = row.querySelector(".info-column:nth-child(3)").textContent.toLowerCase();
+                    const carburant = row.querySelector(".info-column:nth-child(4)").textContent.toLowerCase();
+                    const date = row.querySelector(".info-column:nth-child(5)").textContent.toLowerCase();
+                    const kilometrage = row.querySelector(".info-column:nth-child(6)").textContent.toLowerCase();
+                    const report = row.querySelector(".info-column:nth-child(7)").textContent.toLowerCase();
+    
+                    const rowContent = `${title} ${price} ${carburant} ${date} ${kilometrage} ${report}`;
+    
+                    const showRow = searchTerms.every(term => rowContent.includes(term));
+    
+                    if (showRow) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchBox = document.getElementById("search-box");
+            const tableRows = document.querySelectorAll(".announce");
+            const filterCheckbox = document.getElementById("filter-checkbox");
+    
+            // Event listener for search box input
+            searchBox.addEventListener("input", function() {
+                const searchTerms = searchBox.value.toLowerCase().split(" ");
+    
+                tableRows.forEach(row => {
+                    const title = row.querySelector(".info-column:nth-child(2)").textContent.toLowerCase();
+                    const price = row.querySelector(".info-column:nth-child(3)").textContent.toLowerCase();
+                    const carburant = row.querySelector(".info-column:nth-child(4)").textContent.toLowerCase();
+                    const date = row.querySelector(".info-column:nth-child(5)").textContent.toLowerCase();
+                    const kilometrage = row.querySelector(".info-column:nth-child(6)").textContent.toLowerCase();
+                    const report = row.querySelector(".info-column:nth-child(7)").textContent.toLowerCase();
+    
+                    const rowContent = `${title} ${price} ${carburant} ${date} ${kilometrage} ${report}`;
+    
+                    const showRow = searchTerms.every(term => rowContent.includes(term));
+    
+                    if (showRow) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+
+            // Event listener for checkbox to filter rows with non-zero 'given_price'
+            filterCheckbox.addEventListener("change", function() {
+                tableRows.forEach(row => {
+                    const givenPrice = row.getAttribute("data-given-price");
+                    if (filterCheckbox.checked && givenPrice === '0') {
+                        row.style.display = "none"; // Hide rows with given_price = '0'
+                    } else {
+                        row.style.display = ""; // Show all rows or those that match the search
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
