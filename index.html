@@ -11,54 +11,41 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f2f2f2; /* Set background color for the whole page */
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
         }
 
         .container {
-            width: 80%; /* Adjust container width as needed */
+            width: 90%; /* Adjust container width for mobile */
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: auto; /* Enable scrolling */
-            max-height: 80vh; /* Set maximum height for scrolling */
+            overflow: auto;
+            max-height: 100vh;
         }
 
-        .search-container {
+        .top-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
-        table {
+        .top-buttons a {
+            margin: 5px;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #696e73;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .search-container {
             width: 100%;
-            border-collapse: collapse;
-            background-color: #fff; /* Set background color for the table */
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .image-column {
-            width: 150px; /* Adjust image column width as needed */
-        }
-
-        .image-column img {
-            width: 100%;
-            height: auto;
-            display: block; /* Ensure image fills its container */
-        }
-
-        .info-column {
-            padding: 10px;
-        }
-
-        .announce:nth-child(even) {
-            background-color: #e0e0e0; /* Set background color for even rows */
+            margin-bottom: 10px;
+            text-align: center;
         }
 
         .search-box {
@@ -70,30 +57,82 @@
             margin-bottom: 10px;
         }
 
-        .report-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-image: url('report-icon.png'); /* Replace 'report-icon.png' with your icon image */
-            background-size: cover;
-            margin-right: 5px;
+        label {
+            font-size: 14px;
         }
 
-        .top-buttons {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            overflow-x: auto;
+            display: block; /* Enable horizontal scrolling */
         }
 
-        .top-buttons a {
-            margin: 0 10px;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #696e73;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .image-column img {
+            width: 100px; /* Scale image for mobile */
+            height: auto;
+            display: block;
+        }
+
+        .announce:nth-child(even) {
+            background-color: #e0e0e0;
+        }
+
+        td h4, td p {
+            margin: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .top-buttons a {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+
+            th, td {
+                font-size: 12px;
+            }
+
+            .image-column img {
+                width: 80px;
+            }
+
+            .search-box {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-buttons a {
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+
+            .search-box {
+                padding: 8px;
+                font-size: 12px;
+            }
+
+            th, td {
+                font-size: 10px;
+                padding: 5px;
+            }
+
+            .image-column img {
+                width: 60px;
+            }
         }
     </style>
 </head>
@@ -102,6 +141,7 @@
         <div class="top-buttons">
             <a href="./prix_fixe" class="btn">Prix Fixe</a>
             <a href="./" class="btn">Appel Offre</a>
+            <a href="./current_appels_offre" class="btn">Current Appel Offre</a>
         </div>
         <div class="search-container">
             <input type="text" class="search-box" id="search-box" placeholder="Search...">
@@ -112,12 +152,12 @@
         <table id="announce-table">
             <thead>
                 <tr>
-                    <th>image</th>
+                    <th>Image</th>
                     <th>Title</th>
-                    <th style="min-width: 100px;">Price</th>
+                    <th>Price</th>
                     <th>Carburant</th>
-                    <th>Date de mise en circulation</th>
-                    <th style="min-width: 100px;">Kilometrage</th>
+                    <th>Date</th>
+                    <th>Kilometrage</th>
                     <th>Report</th>
                 </tr>
             </thead>
@@ -130,7 +170,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 HDI ACTIVE BVA, Diesel, 48011-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -152,7 +192,7 @@
                         </a>
                     </td>
                     <td class="info-column">AUDI A6 2.0 PREMIUM S-TRONIC, Diesel, 69013-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -174,7 +214,7 @@
                         </a>
                     </td>
                     <td class="info-column">BMW NEW 750LI XDRIVE EXCLUSIVE, Essence, 76001-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -196,7 +236,7 @@
                         </a>
                     </td>
                     <td class="info-column">Citroen NEW BERLINGO LIVE CLIM 75CH, Diesel, 64243-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -218,7 +258,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO LIVE CLIM 75CH, Diesel, 65150-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -240,7 +280,7 @@
                         </a>
                     </td>
                     <td class="info-column">Citroen C-ELYSEE 1.6 HDI 92CH SHINE, Diesel, 62575-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -262,7 +302,7 @@
                         </a>
                     </td>
                     <td class="info-column">Citroen NEW BERLINGO LIVE CLIM 75CH, Diesel, 62449-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -284,7 +324,7 @@
                         </a>
                     </td>
                     <td class="info-column">Citroen NEW BERLINGO LIVE CLIM 75CH, Diesel, 64942-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -306,7 +346,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN C-ELYSEE 1.6 HDI 92CH SHINE, Diesel, 64246-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -328,7 +368,7 @@
                         </a>
                     </td>
                     <td class="info-column">Citroen NEW BERLINGO LIVE CLIM 75CH, Diesel, 63424-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -350,7 +390,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO LIVE CLIM 75CH, Diesel, 65158-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -372,7 +412,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO LIVE CLIM 75CH, Diesel, 64238-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -394,7 +434,7 @@
                         </a>
                     </td>
                     <td class="info-column">Citroen NEW BERLINGO LIVE CLIM 75CH, Diesel, 62477-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -416,7 +456,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN C5 AIRCROSS SHINE BVA, Diesel, 65976-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -438,7 +478,7 @@
                         </a>
                     </td>
                     <td class="info-column">Dacia DOKKER AMBIANCE PLUS 1.5 DCI, Diesel, 54641-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -460,7 +500,7 @@
                         </a>
                     </td>
                     <td class="info-column">Dacia DOKKER AMBIANCE PLUS 1.5 DCI, Diesel, 54947-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -482,7 +522,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DUSTER BUSINESS 1.5 DCI 4X4 11, Diesel, 93708-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -504,7 +544,7 @@
                         </a>
                     </td>
                     <td class="info-column">Dacia DOKKER VAN E0 1.5 DCI 1PLC, Diesel, 78801-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -526,7 +566,7 @@
                         </a>
                     </td>
                     <td class="info-column">Fiat DOBLO 1.3L COMBI PACK, Diesel, 99339-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -548,7 +588,7 @@
                         </a>
                     </td>
                     <td class="info-column">Fiat DOBLO 1.3L COMBI PACK, Diesel, 2832-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -570,7 +610,7 @@
                         </a>
                     </td>
                     <td class="info-column">Fiat DOBLO 1.3L COMBI PACK, Diesel, 2834-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -592,7 +632,7 @@
                         </a>
                     </td>
                     <td class="info-column">Fiat DOBLO 1.3L COMBI PACK, Diesel, 5141-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -614,7 +654,7 @@
                         </a>
                     </td>
                     <td class="info-column">Mitsubishi L200 4X4 D CAB, Diesel, 66001-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -636,7 +676,7 @@
                         </a>
                     </td>
                     <td class="info-column">Mitsubishi PAJERO SPORT 2.5 PACK, Diesel, 54452-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -658,7 +698,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 508 2.0 ALLURE HDI BVA CUIR, Diesel, 72215-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -680,7 +720,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 HDI ACTIVE BVA, Diesel, 73176-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -702,7 +742,7 @@
                         </a>
                     </td>
                     <td class="info-column">Peugeot 308 ACCESS BVM 1.6L, Diesel, 50382-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -724,7 +764,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT BOXER L1H1, Diesel, 67083-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -746,7 +786,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 308 ACCESS BVM 1.6L, Diesel, 50384-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -768,7 +808,7 @@
                         </a>
                     </td>
                     <td class="info-column">Peugeot RIFTER 1.6 ACCESS, Diesel, 78464-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -790,7 +830,7 @@
                         </a>
                     </td>
                     <td class="info-column">Peugeot 3008 HDI ACTIVE BVA, Diesel, 61320-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -812,7 +852,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 2L HDI 150 BVM ACTIVE, Diesel, 73175-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -834,7 +874,7 @@
                         </a>
                     </td>
                     <td class="info-column">Peugeot 3008 HDI GTLINE BVA, Diesel, 40277-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -856,7 +896,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40242-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -878,7 +918,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8575-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -900,7 +940,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 1312-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -922,7 +962,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40839-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -944,7 +984,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41018-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -966,7 +1006,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40378-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -988,7 +1028,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40146-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1010,7 +1050,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40766-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1032,7 +1072,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41010-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1054,7 +1094,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40356-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1076,7 +1116,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 39868-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1098,7 +1138,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8582-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1120,7 +1160,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40256-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1142,7 +1182,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8580-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1164,7 +1204,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41054-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1186,7 +1226,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41001-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1208,7 +1248,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 39843-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1230,7 +1270,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41034-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1252,7 +1292,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40894-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1274,7 +1314,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40247-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1296,7 +1336,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40842-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1318,7 +1358,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8578-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1340,7 +1380,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41021-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1362,7 +1402,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40722-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1384,7 +1424,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40167-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1406,7 +1446,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40364-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1428,7 +1468,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8576-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1450,7 +1490,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 1322-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1472,7 +1512,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40845-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1494,7 +1534,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40836-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1516,7 +1556,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41016-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1538,7 +1578,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40357-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1560,7 +1600,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40048-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1582,7 +1622,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8583-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1604,7 +1644,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40586-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1626,7 +1666,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41009-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1648,7 +1688,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8581-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1670,7 +1710,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40280-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1692,7 +1732,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 39855-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1714,7 +1754,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41047-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1736,7 +1776,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40942-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1758,7 +1798,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40250-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1780,7 +1820,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40883-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1802,7 +1842,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8579-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1824,7 +1864,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40846-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1846,7 +1886,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 41028-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1868,7 +1908,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40850-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1890,7 +1930,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40168-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1912,7 +1952,7 @@
                         </a>
                     </td>
                     <td class="info-column">Renault EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40816-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1934,7 +1974,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS VAN EXPLORE 1,5DCI 95C, Diesel, 8577-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1956,7 +1996,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT EXPRESS EQUILIBRE 1,5 DCI 95CH, Diesel, 40969-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -1978,7 +2018,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 HDI ACTIVE BVA, Diesel, 42183-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2000,7 +2040,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 24957-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2022,7 +2062,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT FOURGON 9places L2H2 + SEPARAT, Diesel, 72424-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2044,7 +2084,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT FOURGON 9places L2H2 + SEPARAT, Diesel, 72428-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2066,7 +2106,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 HDI GT LINE BVA, Diesel, 43771-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2088,7 +2128,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 GT LINE BVA, Diesel, 34219-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2110,7 +2150,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 23226-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2132,7 +2172,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 51947-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2154,7 +2194,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance plus 1.5 Dci, Diesel, 54287-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2176,7 +2216,7 @@
                         </a>
                     </td>
                     <td class="info-column">DS RIVOLI 2.0L BlueHDi 180 EAT8, Diesel, 36150-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2198,7 +2238,7 @@
                         </a>
                     </td>
                     <td class="info-column">MERCEDES E 220d, Diesel, 81127-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2220,7 +2260,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 79915-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2242,7 +2282,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 HDI ACTIVE BVA, Diesel, 45987-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2264,7 +2304,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 HDI GT LINE BVA, Diesel, 35467-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2286,7 +2326,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 78301-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2308,7 +2348,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 78295-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2330,7 +2370,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 81369-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2352,7 +2392,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT Partner 1.6 HDI TEPEE ACCESS, Diesel, 51719-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2374,7 +2414,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 79900-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2396,7 +2436,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT PARTNER TEPEE VUL 1.6 HDI, Diesel, 51728-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2418,7 +2458,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 508 ALLURE Business 2.0 HDi, Diesel, 85998-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2440,7 +2480,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 81367-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2462,7 +2502,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 508 ALLURE Business 2.0 HDi, Diesel, 76433-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2484,7 +2524,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 79914-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2506,7 +2546,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 79911-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2528,7 +2568,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT Partner 1.6 HDI TEPEE ACCESS, Diesel, 51717-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2550,7 +2590,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 81368-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2572,7 +2612,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT Partner 1.6 HDI TEPEE ACCESS, Diesel, 51722-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2594,7 +2634,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 81366-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2616,7 +2656,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 43265-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2638,7 +2678,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 43405-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2660,7 +2700,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 43267-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2682,7 +2722,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT DUCATO FOURGON TOLE L2H2, Diesel, 91942-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2704,7 +2744,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT DUCATO FOURGON TOLE L2H2, Diesel, 90663-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2726,7 +2766,7 @@
                         </a>
                     </td>
                     <td class="info-column">TOYOTA YARIS HV FMC DYNAMIC +, Hybride, 14352-T-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2748,7 +2788,7 @@
                         </a>
                     </td>
                     <td class="info-column">ALFA-ROMEO GUILIETTA SUPER 2L BVA, Diesel, 71124-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2770,7 +2810,7 @@
                         </a>
                     </td>
                     <td class="info-column">ALFA-ROMEO GUILIETTA SUPER 2L BVA, Diesel, 71125-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2792,7 +2832,7 @@
                         </a>
                     </td>
                     <td class="info-column">ALFA-ROMEO GUILIETTA SUPER 2L BVA, Diesel, 71128-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2814,7 +2854,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 23224-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2836,7 +2876,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN C elysee 1.6 L HDI 92 CV FEEL, Diesel, 49844-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2858,7 +2898,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 37882-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2880,7 +2920,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 23350-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2902,7 +2942,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 37868-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2924,7 +2964,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 23152-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2946,7 +2986,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 37887-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2968,7 +3008,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance plus 1.5 Dci, Diesel, 3340-E-1</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -2990,7 +3030,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance plus 1.5 Dci, Diesel, 54738-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3012,7 +3052,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance plus 1.5 Dci, Diesel, 3332-E-1</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3034,7 +3074,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER VAN E0 1.5 Dci 1PLC, Diesel, 78797-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3056,7 +3096,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance Glace 1.5 Dci, Diesel, 79909-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3078,7 +3118,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT FOURGON 9places L2H2 + SEPARAT, Diesel, 72425-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3100,7 +3140,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT Pick up 4x4 FULLBACK DC, Diesel, 67238-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3122,7 +3162,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT DUCATO FOURGON TOLE L2H2, Diesel, 90665-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3144,7 +3184,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT Pick up 4x4 FULLBACK DC, Diesel, 67240-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3166,7 +3206,7 @@
                         </a>
                     </td>
                     <td class="info-column">HYUNDAI New TUCSON LUXE BVA 4x4, Diesel, 71730-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3188,7 +3228,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT TEPEE STYLE 1.6 HDI 75Ch, Diesel, 38242-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3210,7 +3250,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT New 208 Access 1.6L 92CH, Diesel, 80012-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3232,7 +3272,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT CLIO 4 LIFE Business, Diesel, 76441-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3254,7 +3294,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 43237-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3276,7 +3316,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT M, Diesel, 71109-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3298,7 +3338,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 43288-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3320,7 +3360,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 43301-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3342,7 +3382,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 37888-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3364,7 +3404,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN NEW BERLINGO ATTRACTION CLIM, Diesel, 37951-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3386,7 +3426,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance Glace 1.5 Dci, Diesel, 42536-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3408,7 +3448,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT CARGO CORTO 1.3 S/C, Diesel, 85354-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3430,7 +3470,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT DUCATO FOURGON TOLE L2H2, Diesel, 90664-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3452,7 +3492,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 79916-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3474,7 +3514,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 HDI GT LINE BVA, Diesel, 43770-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3496,7 +3536,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 41446-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 90 000 Dhs</p>
                     </td>
@@ -3518,7 +3558,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 41814-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3540,7 +3580,7 @@
                         </a>
                     </td>
                     <td class="info-column">AUDI A4 2,0 TDI 150 CV Business Lin, Diesel, 85068-H-1</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3562,7 +3602,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN C elysee 1.6 L HDI 92 CV FEEL, Diesel, 47149-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 94 000 Dhs</p>
                     </td>
@@ -3584,7 +3624,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance Glace 1.5 Dci, Diesel, 25428-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 97 000 Dhs</p>
                     </td>
@@ -3606,7 +3646,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA NEW LOGAN LAUREATE 1.5 DCI, Diesel, 66517-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 98 000 Dhs</p>
                     </td>
@@ -3628,7 +3668,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance plus 1.5 Dci, Diesel, 3356-E-1</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3650,7 +3690,7 @@
                         </a>
                     </td>
                     <td class="info-column">FIAT Pick up 4x4 FULLBACK DC, Diesel, 64966-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3672,7 +3712,7 @@
                         </a>
                     </td>
                     <td class="info-column">HYUNDAI New TUCSON LUXE BVA 4x4, Diesel, 71729-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3694,7 +3734,7 @@
                         </a>
                     </td>
                     <td class="info-column">MITSUBISHI L200 4x4 D CAB GLX, Diesel, 73966-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3716,7 +3756,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 508 ALLURE Business 2.0 HDi, Diesel, 73688-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3738,7 +3778,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 1.6L HDI white edition, Diesel, 73177-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 104 000 Dhs</p>
                     </td>
@@ -3760,7 +3800,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT New Expert Combi 9 Places, Diesel, 65763-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3782,7 +3822,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 508 2.0 ALLURE HDI BVA CUIR, Diesel, 54935-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3804,7 +3844,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 78297-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3826,7 +3866,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 1.6L HDI white edition, Diesel, 73178-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3848,7 +3888,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT New Expert Combi 9 Places, Diesel, 65762-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3870,7 +3910,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 3008 GT LINE Confort, Diesel, 22016-E-1</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3892,7 +3932,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life, Diesel, 41440-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3914,7 +3954,7 @@
                         </a>
                     </td>
                     <td class="info-column">AUDI A5 2.0L TDI SB PRESTIGE, Diesel, 83672-H-1</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3936,7 +3976,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN JUMPY COMBI 8PLC, Diesel, 49843-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3958,7 +3998,7 @@
                         </a>
                     </td>
                     <td class="info-column">CITROEN New Berlingo LIVE CLIM 75ch, Diesel, 56235-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -3980,7 +4020,7 @@
                         </a>
                     </td>
                     <td class="info-column">DACIA DOKKER Ambiance Glace 1.5 Dci, Diesel, 46076-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 99 000</p>
                     </td>
@@ -4002,7 +4042,7 @@
                         </a>
                     </td>
                     <td class="info-column">HYUNDAI New TUCSON LUXE BVA 4x4, Diesel, 76764-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4024,7 +4064,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 78262-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4046,7 +4086,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Access Clim 1.6 HDI 75 C, Diesel, 53235-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4068,7 +4108,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 508 ALLURE Business 2.0 HDi, Diesel, 73690-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4090,7 +4130,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 308 1.6 HDI Active 90cv, Diesel, 43606-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4112,7 +4152,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 301 BUSINESS, Diesel, 95512-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4134,7 +4174,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 208 Active 1.6 HDI 75 CV, Diesel, 78294-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4156,7 +4196,7 @@
                         </a>
                     </td>
                     <td class="info-column">PEUGEOT 308 Access BVM 1.6L, Diesel, 50389-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4178,7 +4218,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT MASTER Traction L1H1, Diesel, 41430-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 123 000</p>
                     </td>
@@ -4200,7 +4240,7 @@
                         </a>
                     </td>
                     <td class="info-column">RENAULT Kangoo 1.5DCI 85 Life CLIM, Diesel, 42067-E-6</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4222,7 +4262,7 @@
                         </a>
                     </td>
                     <td class="info-column">AUDI A4 2,0 TDI 150 CV Business Lin, Diesel, 85068-H-1</td>
-                    <td class="info-column" >
+                    <td class="info-column">
                         <h4 style="color: #00cb00; font-weight: 700;">None</h4>
                         <p style="color: #4e4f4e; font-weight: 700;">> 0</p>
                     </td>
@@ -4240,78 +4280,5 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const searchBox = document.getElementById("search-box");
-            const tableRows = document.querySelectorAll(".announce");
-    
-            searchBox.addEventListener("input", function() {
-                const searchTerms = searchBox.value.toLowerCase().split(" ");
-    
-                tableRows.forEach(row => {
-                    const title = row.querySelector(".info-column:nth-child(2)").textContent.toLowerCase();
-                    const price = row.querySelector(".info-column:nth-child(3)").textContent.toLowerCase();
-                    const carburant = row.querySelector(".info-column:nth-child(4)").textContent.toLowerCase();
-                    const date = row.querySelector(".info-column:nth-child(5)").textContent.toLowerCase();
-                    const kilometrage = row.querySelector(".info-column:nth-child(6)").textContent.toLowerCase();
-                    const report = row.querySelector(".info-column:nth-child(7)").textContent.toLowerCase();
-    
-                    const rowContent = `${title} ${price} ${carburant} ${date} ${kilometrage} ${report}`;
-    
-                    const showRow = searchTerms.every(term => rowContent.includes(term));
-    
-                    if (showRow) {
-                        row.style.display = "";
-                    } else {
-                        row.style.display = "none";
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const searchBox = document.getElementById("search-box");
-            const tableRows = document.querySelectorAll(".announce");
-            const filterCheckbox = document.getElementById("filter-checkbox");
-    
-            // Event listener for search box input
-            searchBox.addEventListener("input", function() {
-                const searchTerms = searchBox.value.toLowerCase().split(" ");
-    
-                tableRows.forEach(row => {
-                    const title = row.querySelector(".info-column:nth-child(2)").textContent.toLowerCase();
-                    const price = row.querySelector(".info-column:nth-child(3)").textContent.toLowerCase();
-                    const carburant = row.querySelector(".info-column:nth-child(4)").textContent.toLowerCase();
-                    const date = row.querySelector(".info-column:nth-child(5)").textContent.toLowerCase();
-                    const kilometrage = row.querySelector(".info-column:nth-child(6)").textContent.toLowerCase();
-                    const report = row.querySelector(".info-column:nth-child(7)").textContent.toLowerCase();
-    
-                    const rowContent = `${title} ${price} ${carburant} ${date} ${kilometrage} ${report}`;
-    
-                    const showRow = searchTerms.every(term => rowContent.includes(term));
-    
-                    if (showRow) {
-                        row.style.display = "";
-                    } else {
-                        row.style.display = "none";
-                    }
-                });
-            });
-
-            // Event listener for checkbox to filter rows with non-zero 'given_price'
-            filterCheckbox.addEventListener("change", function() {
-                tableRows.forEach(row => {
-                    const givenPrice = row.getAttribute("data-given-price");
-                    if (filterCheckbox.checked && givenPrice === '0') {
-                        row.style.display = "none"; // Hide rows with given_price = '0'
-                    } else {
-                        row.style.display = ""; // Show all rows or those that match the search
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
