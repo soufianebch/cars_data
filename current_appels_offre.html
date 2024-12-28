@@ -148,7 +148,8 @@
             margin-top: 20px;
             width: 100%;
             text-align: center;
-            max-height: 500px; /* Increase the height here */
+            max-height: 500px;
+            /* Increase the height here */
             /* overflow-y: auto; Keeps the scrollable feature */
         }
 
@@ -179,7 +180,7 @@
             <a href="./prix_fixe" class="btn">Prix Fixe</a>
             <a href="./" class="btn">Appel Offre</a>
         </div>
-        
+
         <div class="top-buttons">
             <a href="./current_appels_offre" class="btn" style="background-color: #a76e05;">NEW Appel Offre</a>
             <a href="./current_prix_fixe" class="btn" style="background-color: green;">NEW Prix Fixe</a>
@@ -203,7 +204,7 @@
             <hr>
 
         </div>
-        <table id="announce-table" >
+        <table id="announce-table">
             <thead>
                 <tr>
                     <th>Image</th>
@@ -1648,12 +1649,28 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            const summaryRows = document.querySelectorAll("#summary-table tbody tr");
             const searchBox = document.getElementById("search-box");
             const tableRows = document.querySelectorAll(".announce");
 
+            // Add click event listener to summary table rows
+            summaryRows.forEach(row => {
+                row.addEventListener("click", function () {
+                    // Get the vehicle name from the clicked row
+                    const vehicleName = row.querySelector("td:first-child").textContent.trim();
+
+                    // Set the search box value to the clicked vehicle name
+                    searchBox.value = vehicleName;
+
+                    // Trigger the search by calling the existing input event handler
+                    const event = new Event("input");
+                    searchBox.dispatchEvent(event);
+                });
+            });
+
+            // Search functionality (already exists)
             searchBox.addEventListener("input", function () {
                 const searchTerms = searchBox.value.toLowerCase().split(" ");
-
                 tableRows.forEach(row => {
                     const title = row.querySelector(".info-column:nth-child(2)").textContent.toLowerCase();
                     const price = row.querySelector(".info-column:nth-child(3)").textContent.toLowerCase();
@@ -1663,7 +1680,6 @@
                     const report = row.querySelector(".info-column:nth-child(7)").textContent.toLowerCase();
 
                     const rowContent = `${title} ${price} ${carburant} ${date} ${kilometrage} ${report}`;
-
                     const showRow = searchTerms.every(term => rowContent.includes(term));
 
                     if (showRow) {
@@ -1674,6 +1690,7 @@
                 });
             });
         });
+
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
